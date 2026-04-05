@@ -15,7 +15,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .nav-links{display:flex;gap:2rem;list-style:none}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s}
 .nav-links a:hover{color:var(--text)}
-.nav-cta{display:inline-flex;align-items:center;gap:0.4rem;background:var(--accent);color:#0a0a0f;padding:0.55rem 1.2rem;border-radius:6px;font-weight:500;font-size:0.8rem;text-decoration:none;transition:all 0.2s}
+.nav-cta{display:inline-flex;align-items:center;background:var(--accent);color:#0a0a0f;padding:0.55rem 1.2rem;border-radius:6px;font-weight:500;font-size:0.8rem;text-decoration:none;transition:all 0.2s}
 .nav-cta:hover{background:#d4e83e}
 #hero{min-height:100vh;display:flex;align-items:center;padding:8rem 4rem 4rem;position:relative;overflow:hidden}
 .orb{position:absolute;border-radius:50%;filter:blur(110px);pointer-events:none}
@@ -53,7 +53,7 @@ h1 .acc{color:var(--accent)}
 .t-role{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:0.75rem}
 .t-bullets{list-style:none;display:flex;flex-direction:column;gap:0.45rem}
 .t-bullets li{font-size:0.85rem;color:var(--muted);padding-left:1rem;position:relative;line-height:1.65}
-.t-bullets li::before{content:'—';position:absolute;left:0;color:var(--accent);font-size:0.65rem;top:0.18rem}
+.t-bullets li::before{content:'--';position:absolute;left:0;color:var(--accent);font-size:0.65rem;top:0.18rem}
 .t-bullets strong{color:var(--text);font-weight:500}
 #projects{background:var(--bg)}
 .projects-list{display:flex;flex-direction:column;gap:2rem}
@@ -67,25 +67,32 @@ h1 .acc{color:var(--accent)}
 .proj-desc{font-size:0.86rem;color:var(--muted);line-height:1.75;margin-bottom:1.5rem}
 .proj-bullets{list-style:none;display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1.5rem}
 .proj-bullets li{font-size:0.82rem;color:var(--muted);padding-left:1rem;position:relative;line-height:1.6}
-.proj-bullets li::before{content:'→';position:absolute;left:0;color:var(--accent2);font-size:0.7rem;top:0.15rem}
+.proj-bullets li::before{content:'>';position:absolute;left:0;color:var(--accent2);font-size:0.7rem;top:0.15rem}
 .proj-media{border-left:1px solid var(--border);background:var(--card2);display:flex;flex-direction:column;min-height:280px}
 .media-tabs{display:flex;border-bottom:1px solid var(--border)}
-.media-tab{flex:1;padding:0.8rem;font-size:0.72rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);background:none;border:none;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif}
+.media-tab{flex:1;padding:0.7rem 0.4rem;font-size:0.68rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);background:none;border:none;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif}
 .media-tab.active{color:var(--accent);background:rgba(232,255,71,0.05);border-bottom:2px solid var(--accent)}
-.media-panel{flex:1;display:none;flex-direction:column;align-items:center;justify-content:center;padding:2rem;gap:1rem}
+.media-panel{flex:1;display:none;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem;gap:1rem}
 .media-panel.active{display:flex}
-.upload-zone{width:100%;flex:1;border:1.5px dashed rgba(255,255,255,0.12);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.6rem;padding:2rem 1rem;cursor:pointer;transition:all 0.2s;text-align:center;background:rgba(255,255,255,0.01);min-height:160px}
+.upload-zone{width:100%;flex:1;border:1.5px dashed rgba(255,255,255,0.12);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.6rem;padding:1.5rem 1rem;cursor:pointer;transition:all 0.2s;text-align:center;background:rgba(255,255,255,0.01);min-height:150px}
 .upload-zone:hover{border-color:rgba(232,255,71,0.3);background:rgba(232,255,71,0.02)}
 .upload-zone input[type="file"]{display:none}
-.upload-icon{font-size:1.8rem;opacity:0.4}
+.upload-icon{font-size:1.6rem;opacity:0.4}
 .upload-label{font-size:0.8rem;color:var(--muted)}
 .upload-label strong{color:var(--accent);font-weight:500}
-.upload-sub{font-size:0.68rem;color:var(--muted);opacity:0.6}
+.upload-sub{font-size:0.67rem;color:var(--muted);opacity:0.55}
 .media-preview{width:100%;display:none;flex-direction:column;gap:0.75rem}
 .media-preview.has-content{display:flex}
 .preview-img{width:100%;border-radius:8px;max-height:200px;object-fit:cover}
 .preview-video{width:100%;border-radius:8px;max-height:200px}
-.remove-btn{font-size:0.72rem;color:var(--accent3);background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:0;opacity:0.7}
+.file-preview-box{width:100%;background:rgba(232,255,71,0.05);border:1px solid rgba(232,255,71,0.15);border-radius:8px;padding:1rem 1.2rem;display:flex;align-items:center;gap:0.75rem}
+.file-preview-icon{font-size:1.5rem;flex-shrink:0}
+.file-preview-info{flex:1;min-width:0}
+.file-preview-name{font-size:0.82rem;color:var(--accent);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.file-preview-size{font-size:0.7rem;color:var(--muted);margin-top:0.15rem}
+.file-download-btn{display:inline-flex;align-items:center;gap:0.3rem;background:rgba(232,255,71,0.1);border:1px solid rgba(232,255,71,0.2);color:var(--accent);border-radius:6px;padding:0.4rem 0.8rem;font-size:0.72rem;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;transition:all 0.2s;flex-shrink:0}
+.file-download-btn:hover{background:rgba(232,255,71,0.18)}
+.remove-btn{font-size:0.72rem;color:var(--accent3);background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:0;opacity:0.7;align-self:flex-start}
 .remove-btn:hover{opacity:1}
 .url-input-wrap{width:100%;display:flex;flex-direction:column;gap:0.6rem}
 .url-input{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border2);border-radius:6px;padding:0.65rem 1rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.82rem;outline:none;transition:border-color 0.2s}
@@ -98,10 +105,10 @@ h1 .acc{color:var(--accent)}
 .certs-toggle-btn{display:inline-flex;align-items:center;gap:0.6rem;background:transparent;border:1px solid var(--border2);color:var(--muted);border-radius:8px;padding:0.75rem 1.5rem;font-size:0.85rem;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;margin-bottom:2rem}
 .certs-toggle-btn:hover{border-color:var(--accent);color:var(--accent)}
 .certs-body{display:none}
-.cert-filter{display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:2.5rem}
-.cf-btn{background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:100px;padding:0.35rem 1rem;font-size:0.75rem;font-weight:500;letter-spacing:0.04em;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s}
+.cert-filter{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.cf-btn{background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:100px;padding:0.35rem 0.9rem;font-size:0.73rem;font-weight:500;letter-spacing:0.03em;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;white-space:nowrap}
 .cf-btn.active,.cf-btn:hover{background:rgba(232,255,71,0.08);border-color:rgba(232,255,71,0.25);color:var(--accent)}
-.certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
 .cert-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.25s}
 .cert-card:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,0.4)}
 .cert-image-zone{height:160px;background:var(--card2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-direction:column;gap:0.5rem;cursor:pointer}
@@ -149,6 +156,7 @@ footer{border-top:1px solid var(--border);padding:1.8rem 4rem;display:flex;justi
   .t-item{grid-template-columns:1fr;gap:0.5rem}
   footer{padding:1.5rem;flex-direction:column;gap:0.5rem}
   .hero-stats{gap:2rem;margin-top:3rem}
+  .cf-btn{font-size:0.68rem;padding:0.3rem 0.7rem}
 }
 </style>
 </head>
@@ -190,7 +198,6 @@ footer{border-top:1px solid var(--border);padding:1.8rem 4rem;display:flex;justi
     <p class="section-label reveal">Career</p>
     <h2 class="section-title reveal">Experience <span>&amp; History</span></h2>
     <div class="timeline">
-
       <div class="t-item reveal">
         <div><div class="t-date">May 2025 &ndash; Apr 2026</div><div class="t-company">MHIRJ &mdash; Mitsubishi Heavy Industries</div></div>
         <div>
@@ -202,7 +209,6 @@ footer{border-top:1px solid var(--border);padding:1.8rem 4rem;display:flex;justi
           </ul>
         </div>
       </div>
-
       <div class="t-item reveal">
         <div><div class="t-date">May 2024 &ndash; Apr 2025</div><div class="t-company">Al Manarat</div></div>
         <div>
@@ -214,7 +220,6 @@ footer{border-top:1px solid var(--border);padding:1.8rem 4rem;display:flex;justi
           </ul>
         </div>
       </div>
-
       <div class="t-item reveal">
         <div><div class="t-date">Aug &ndash; Dec 2024</div><div class="t-company">Utopia Logistics</div></div>
         <div>
@@ -226,7 +231,6 @@ footer{border-top:1px solid var(--border);padding:1.8rem 4rem;display:flex;justi
           </ul>
         </div>
       </div>
-
       <div class="t-item reveal">
         <div><div class="t-date">Oct 2023 &ndash; May 2024</div><div class="t-company">Oxford Learning Centres</div></div>
         <div>
@@ -238,7 +242,6 @@ footer{border-top:1px solid var(--border);padding:1.8rem 4rem;display:flex;justi
           </ul>
         </div>
       </div>
-
       <div class="t-item reveal">
         <div><div class="t-date">Jan &ndash; Apr 2023</div><div class="t-company">Markaz Umaza</div></div>
         <div>
@@ -250,7 +253,6 @@ footer{border-top:1px solid var(--border);padding:1.8rem 4rem;display:flex;justi
           </ul>
         </div>
       </div>
-
       <div class="t-item reveal">
         <div><div class="t-date">May&ndash;Aug 2022 &amp; 2023</div><div class="t-company">Day to Day Logistics</div></div>
         <div>
@@ -262,7 +264,6 @@ footer{border-top:1px solid var(--border);padding:1.8rem 4rem;display:flex;justi
           </ul>
         </div>
       </div>
-
     </div>
   </div>
 </div>
@@ -283,9 +284,14 @@ footer{border-top:1px solid var(--border);padding:1.8rem 4rem;display:flex;justi
     <div class="certs-body" id="certsBody">
       <div class="cert-filter" id="certFilter">
         <button class="cf-btn active" data-filter="all">All</button>
-        <button class="cf-btn" data-filter="ib">Investment Banking</button>
-        <button class="cf-btn" data-filter="consulting">Consulting</button>
-        <button class="cf-btn" data-filter="data">Data &amp; Tech</button>
+        <button class="cf-btn" data-filter="gs">Goldman Sachs</button>
+        <button class="cf-btn" data-filter="jpm">JP Morgan</button>
+        <button class="cf-btn" data-filter="pwc">PwC</button>
+        <button class="cf-btn" data-filter="deloitte">Deloitte</button>
+        <button class="cf-btn" data-filter="kpmg">KPMG</button>
+        <button class="cf-btn" data-filter="citi">Citi</button>
+        <button class="cf-btn" data-filter="tata">Tata</button>
+        <button class="cf-btn" data-filter="finance">Finance</button>
         <button class="cf-btn" data-filter="education">Education</button>
       </div>
       <div class="certs-grid" id="certsGrid"></div>
@@ -321,54 +327,144 @@ footer{border-top:1px solid var(--border);padding:1.8rem 4rem;display:flex;justi
 
 <script>
 var projects = [
-  {num:'01',name:'Equity Valuation Analysis',stack:'Python &middot; Excel &middot; R',desc:'Full intrinsic valuation using DCF with scenario analysis, trading comps, and precedent transactions.',bullets:['Built a multi-scenario DCF model to estimate intrinsic value against a 52-week trading range','Derived implied share price range using EV/EBITDA and P/E comps across comparable public companies','Triangulated via precedent transaction analysis to benchmark acquisition premiums and fair value']},
-  {num:'02',name:'Fleet Risk Optimization',stack:'MySQL &middot; NumPy &middot; Excel',desc:'Modeled fleet insurance costs and liabilities to pinpoint financial inefficiencies and reduce exposure.',bullets:['Built P&amp;L summaries and a risk-scoring algorithm to flag cost bottlenecks','Ran financial statement analysis across income statements and balance sheets','Reduced modeled financial exposure through data-driven capital allocation recommendations']},
-  {num:'03',name:'Market Risk Assessment',stack:'R &middot; Global Market Research',desc:'Analyzed 1,000+ global market data points to identify pricing inefficiencies and macroeconomic trends.',bullets:['Identified pricing inefficiencies across global datasets using statistical modeling in R','Proposed solutions showing a potential 10% improvement in resource allocation efficiency','Synthesized macroeconomic trends into actionable strategic recommendations']},
-  {num:'04',name:'Pawgress',stack:'Java &middot; Scene Builder &middot; Git',desc:'Interactive app with AI-powered behavior analysis to improve user engagement and retention.',bullets:['Built with JavaFX and Scene Builder for a responsive, intuitive interface','Integrated AI behavior analysis module to personalize user experience','Set up automated testing feedback loops to accelerate feature delivery']}
+  {num:'01',name:'Equity Valuation Analysis',stack:'Python / Excel / R',desc:'Full intrinsic valuation using DCF with scenario analysis, trading comps, and precedent transactions.',bullets:['Built a multi-scenario DCF model to estimate intrinsic value against a 52-week trading range','Derived implied share price range using EV/EBITDA and P/E comps across comparable public companies','Triangulated via precedent transaction analysis to benchmark acquisition premiums and fair value']},
+  {num:'02',name:'Fleet Risk Optimization',stack:'MySQL / NumPy / Excel',desc:'Modeled fleet insurance costs and liabilities to pinpoint financial inefficiencies and reduce exposure.',bullets:['Built P&L summaries and a risk-scoring algorithm to flag cost bottlenecks','Ran financial statement analysis across income statements and balance sheets','Reduced modeled financial exposure through data-driven capital allocation recommendations']},
+  {num:'03',name:'Market Risk Assessment',stack:'R / Global Market Research',desc:'Analyzed 1,000+ global market data points to identify pricing inefficiencies and macroeconomic trends.',bullets:['Identified pricing inefficiencies across global datasets using statistical modeling in R','Proposed solutions showing a potential 10% improvement in resource allocation efficiency','Synthesized macroeconomic trends into actionable strategic recommendations']},
+  {num:'04',name:'Pawgress',stack:'Java / Scene Builder / Git',desc:'Interactive app with AI-powered behavior analysis to improve user engagement and retention.',bullets:['Built with JavaFX and Scene Builder for a responsive, intuitive interface','Integrated AI behavior analysis module to personalize user experience','Set up automated testing feedback loops to accelerate feature delivery']}
 ];
 
 var certs = [
-  {name:'CFA Level I',issuer:'CFA Institute',company:'CFA',status:'completed',category:'education',image:'certifications/CFA-L1.png'},
-  {name:'BSc/BA Computer Science & Financial Economics',issuer:'University of Western Ontario - Apr 2027',company:'UWO',status:'in-progress',category:'education',image:''},
-  {name:'Investment Banking',issuer:'JP Morgan Chase',company:'JPM',status:'planned',category:'ib',image:''},
-  {name:'Investment Banking',issuer:'Citi',company:'Citi',status:'planned',category:'ib',image:''},
-  {name:'Investment Banking',issuer:'Bank of America',company:'BofA',status:'planned',category:'ib',image:''},
-  {name:'Risk',issuer:'Goldman Sachs',company:'GS',status:'planned',category:'ib',image:''},
-  {name:'Markets Sales & Trading',issuer:'Citi',company:'Citi',status:'planned',category:'ib',image:''},
-  {name:'Strategy Consulting',issuer:'BCG',company:'BCG',status:'planned',category:'consulting',image:''},
-  {name:'Management Consulting',issuer:'McKinsey & Company',company:'McK',status:'planned',category:'consulting',image:''},
-  {name:'Management Consulting',issuer:'PwC',company:'PwC',status:'planned',category:'consulting',image:''},
-  {name:'Data Analytics',issuer:'Deloitte',company:'DLT',status:'planned',category:'data',image:''},
-  {name:'Data Science',issuer:'BCG',company:'BCG',status:'planned',category:'data',image:''},
-  {name:'GenAI',issuer:'BCG',company:'BCG',status:'planned',category:'data',image:''},
-  {name:'Solutions Architecture',issuer:'AWS',company:'AWS',status:'planned',category:'data',image:''},
-  {name:'Quantitative Research',issuer:'JP Morgan Chase',company:'JPM',status:'planned',category:'data',image:''}
+  {name:'Software Engineering',issuer:'Goldman Sachs',company:'GS',status:'planned',category:'gs',image:''},
+  {name:'Risk',issuer:'Goldman Sachs',company:'GS',status:'planned',category:'gs',image:''},
+  {name:'Operations',issuer:'Goldman Sachs',company:'GS',status:'planned',category:'gs',image:''},
+  {name:'Investment Banking',issuer:'JP Morgan Chase',company:'JPM',status:'planned',category:'jpm',image:''},
+  {name:'Quantitative Research',issuer:'JP Morgan Chase',company:'JPM',status:'planned',category:'jpm',image:''},
+  {name:'Software Engineering',issuer:'JP Morgan Chase',company:'JPM',status:'planned',category:'jpm',image:''},
+  {name:'Management Consulting',issuer:'PwC',company:'PwC',status:'planned',category:'pwc',image:''},
+  {name:'Audit',issuer:'PwC',company:'PwC',status:'planned',category:'pwc',image:''},
+  {name:'Technology Consulting',issuer:'PwC',company:'PwC',status:'planned',category:'pwc',image:''},
+  {name:'Data Analytics',issuer:'Deloitte',company:'DLT',status:'planned',category:'deloitte',image:''},
+  {name:'Technology',issuer:'Deloitte',company:'DLT',status:'planned',category:'deloitte',image:''},
+  {name:'Cyber',issuer:'Deloitte',company:'DLT',status:'planned',category:'deloitte',image:''},
+  {name:'Audit',issuer:'KPMG',company:'KPMG',status:'planned',category:'kpmg',image:''},
+  {name:'Advisory',issuer:'KPMG',company:'KPMG',status:'planned',category:'kpmg',image:''},
+  {name:'Data Analytics',issuer:'KPMG',company:'KPMG',status:'planned',category:'kpmg',image:''},
+  {name:'Investment Banking',issuer:'Citi',company:'Citi',status:'planned',category:'citi',image:''},
+  {name:'Markets Sales & Trading',issuer:'Citi',company:'Citi',status:'planned',category:'citi',image:''},
+  {name:'Markets Quantitative Analysis',issuer:'Citi',company:'Citi',status:'planned',category:'citi',image:''},
+  {name:'Data Visualization',issuer:'Tata',company:'Tata',status:'planned',category:'tata',image:''},
+  {name:'GenAI Powered Data Analytics',issuer:'Tata',company:'Tata',status:'planned',category:'tata',image:''},
+  {name:'CFA Level I',issuer:'CFA Institute',company:'CFA',status:'completed',category:'finance',image:'certifications/CFA-L1.png'},
+  {name:'BSc/BA Computer Science & Financial Economics',issuer:'University of Western Ontario - Apr 2027',company:'UWO',status:'in-progress',category:'education',image:''}
 ];
 
-function toggleCerts() {
-  var body = document.getElementById('certsBody');
-  var btn = document.getElementById('certsToggleBtn');
-  if (body.style.display === 'block') {
-    body.style.display = 'none';
-    btn.innerHTML = 'Show Certifications &#8595;';
-  } else {
-    body.style.display = 'block';
-    btn.innerHTML = 'Hide Certifications &#8593;';
-  }
+function toggleCerts(){
+  var body=document.getElementById('certsBody');
+  var btn=document.getElementById('certsToggleBtn');
+  if(body.style.display==='block'){body.style.display='none';btn.innerHTML='Show Certifications &#8595;';}
+  else{body.style.display='block';btn.innerHTML='Hide Certifications &#8593;';}
 }
 
-function renderProjects() {
-  var container = document.getElementById('projectsList');
-  projects.forEach(function(p, i) {
-    var card = document.createElement('div');
-    card.className = 'proj-card reveal';
-    card.innerHTML = '<div class="proj-card-inner"><div class="proj-info"><div class="proj-num">'+p.num+'</div><div class="proj-name">'+p.name+'</div><div class="proj-stack">'+p.stack+'</div><div class="proj-desc">'+p.desc+'</div><ul class="proj-bullets">'+p.bullets.map(function(b){return '<li>'+b+'</li>';}).join('')+'</ul></div><div class="proj-media"><div class="media-tabs"><button class="media-tab active" data-tab="image" data-proj="'+i+'">Image</button><button class="media-tab" data-tab="video" data-proj="'+i+'">Video</button><button class="media-tab" data-tab="link" data-proj="'+i+'">Link</button></div><div class="media-panel active" data-panel="image" data-proj="'+i+'"><div class="media-preview" id="img-preview-'+i+'"><img class="preview-img" id="img-el-'+i+'" src="" alt=""/><button class="remove-btn" onclick="removeMedia(\'img\','+i+')">Remove</button></div><label class="upload-zone" id="img-zone-'+i+'"><input type="file" accept="image/*" onchange="handleImageUpload(event,'+i+')"/><span class="upload-icon">&#128444;</span><span class="upload-label"><strong>Click to upload</strong> a screenshot</span><span class="upload-sub">PNG, JPG, GIF</span></label></div><div class="media-panel" data-panel="video" data-proj="'+i+'"><div class="media-preview" id="vid-preview-'+i+'"><video class="preview-video" id="vid-el-'+i+'" controls></video><button class="remove-btn" onclick="removeMedia(\'vid\','+i+')">Remove</button></div><label class="upload-zone" id="vid-zone-'+i+'"><input type="file" accept="video/*" onchange="handleVideoUpload(event,'+i+')"/><span class="upload-icon">&#127909;</span><span class="upload-label"><strong>Click to upload</strong> a demo video</span><span class="upload-sub">MP4, MOV, WebM</span></label></div><div class="media-panel" data-panel="link" data-proj="'+i+'"><div class="url-input-wrap"><input class="url-input" id="url-input-'+i+'" type="url" placeholder="Paste YouTube or GitHub URL..."/><button class="url-btn" onclick="embedUrl('+i+')">Embed</button><iframe class="url-embed" id="url-embed-'+i+'" src="" style="display:none" allowfullscreen></iframe></div></div></div></div>';
+function getFileIcon(name){
+  var ext=name.split('.').pop().toLowerCase();
+  if(ext==='xlsx'||ext==='xls')return '📊';
+  if(ext==='pdf')return '📄';
+  if(ext==='csv')return '📋';
+  if(ext==='pptx'||ext==='ppt')return '📑';
+  return '📁';
+}
+
+function formatSize(bytes){
+  if(bytes<1024)return bytes+'B';
+  if(bytes<1048576)return (bytes/1024).toFixed(1)+'KB';
+  return (bytes/1048576).toFixed(1)+'MB';
+}
+
+function renderProjects(){
+  var container=document.getElementById('projectsList');
+  projects.forEach(function(p,i){
+    var card=document.createElement('div');
+    card.className='proj-card reveal';
+    var bullets=p.bullets.map(function(b){return '<li>'+b+'</li>';}).join('');
+    card.innerHTML=
+      '<div class="proj-card-inner">'+
+        '<div class="proj-info">'+
+          '<div class="proj-num">'+p.num+'</div>'+
+          '<div class="proj-name">'+p.name+'</div>'+
+          '<div class="proj-stack">'+p.stack+'</div>'+
+          '<div class="proj-desc">'+p.desc+'</div>'+
+          '<ul class="proj-bullets">'+bullets+'</ul>'+
+        '</div>'+
+        '<div class="proj-media">'+
+          '<div class="media-tabs">'+
+            '<button class="media-tab active" data-tab="image" data-proj="'+i+'">Image</button>'+
+            '<button class="media-tab" data-tab="file" data-proj="'+i+'">File</button>'+
+            '<button class="media-tab" data-tab="video" data-proj="'+i+'">Video</button>'+
+            '<button class="media-tab" data-tab="link" data-proj="'+i+'">Link</button>'+
+          '</div>'+
+          // IMAGE TAB
+          '<div class="media-panel active" data-panel="image" data-proj="'+i+'">'+
+            '<div class="media-preview" id="img-preview-'+i+'">'+
+              '<img class="preview-img" id="img-el-'+i+'" src="" alt=""/>'+
+              '<button class="remove-btn" onclick="removeMedia(\'img\','+i+')">&#10005; Remove</button>'+
+            '</div>'+
+            '<label class="upload-zone" id="img-zone-'+i+'">'+
+              '<input type="file" accept="image/*" onchange="handleImageUpload(event,'+i+')"/>'+
+              '<span class="upload-icon">&#128444;</span>'+
+              '<span class="upload-label"><strong>Upload your image</strong></span>'+
+              '<span class="upload-sub">PNG, JPG, GIF &mdash; any image you have</span>'+
+            '</label>'+
+          '</div>'+
+          // FILE TAB
+          '<div class="media-panel" data-panel="file" data-proj="'+i+'">'+
+            '<div class="media-preview" id="file-preview-'+i+'">'+
+              '<div class="file-preview-box">'+
+                '<span class="file-preview-icon" id="file-icon-'+i+'">📁</span>'+
+                '<div class="file-preview-info">'+
+                  '<div class="file-preview-name" id="file-name-'+i+'"></div>'+
+                  '<div class="file-preview-size" id="file-size-'+i+'"></div>'+
+                '</div>'+
+                '<a class="file-download-btn" id="file-dl-'+i+'" href="#" download>&#8595; Open</a>'+
+              '</div>'+
+              '<button class="remove-btn" onclick="removeMedia(\'file\','+i+')">&#10005; Remove</button>'+
+            '</div>'+
+            '<label class="upload-zone" id="file-zone-'+i+'">'+
+              '<input type="file" accept=".xlsx,.xls,.csv,.pdf,.pptx,.ppt,.docx,.doc" onchange="handleFileUpload(event,'+i+')"/>'+
+              '<span class="upload-icon">&#128202;</span>'+
+              '<span class="upload-label"><strong>Upload your file</strong></span>'+
+              '<span class="upload-sub">Excel, PDF, CSV, PowerPoint &mdash; any document</span>'+
+            '</label>'+
+          '</div>'+
+          // VIDEO TAB
+          '<div class="media-panel" data-panel="video" data-proj="'+i+'">'+
+            '<div class="media-preview" id="vid-preview-'+i+'">'+
+              '<video class="preview-video" id="vid-el-'+i+'" controls></video>'+
+              '<button class="remove-btn" onclick="removeMedia(\'vid\','+i+')">&#10005; Remove</button>'+
+            '</div>'+
+            '<label class="upload-zone" id="vid-zone-'+i+'">'+
+              '<input type="file" accept="video/*" onchange="handleVideoUpload(event,'+i+')"/>'+
+              '<span class="upload-icon">&#127909;</span>'+
+              '<span class="upload-label"><strong>Upload a demo video</strong></span>'+
+              '<span class="upload-sub">MP4, MOV, WebM</span>'+
+            '</label>'+
+          '</div>'+
+          // LINK TAB
+          '<div class="media-panel" data-panel="link" data-proj="'+i+'">'+
+            '<div class="url-input-wrap">'+
+              '<input class="url-input" id="url-input-'+i+'" type="url" placeholder="Paste YouTube or GitHub URL..."/>'+
+              '<button class="url-btn" onclick="embedUrl('+i+')">Embed</button>'+
+              '<iframe class="url-embed" id="url-embed-'+i+'" src="" style="display:none" allowfullscreen></iframe>'+
+            '</div>'+
+          '</div>'+
+        '</div>'+
+      '</div>';
     container.appendChild(card);
   });
-  document.querySelectorAll('.media-tab').forEach(function(tab) {
-    tab.addEventListener('click', function() {
-      var proj = tab.dataset.proj;
-      var tabName = tab.dataset.tab;
+
+  document.querySelectorAll('.media-tab').forEach(function(tab){
+    tab.addEventListener('click',function(){
+      var proj=tab.dataset.proj;
+      var tabName=tab.dataset.tab;
       document.querySelectorAll('.media-tab[data-proj="'+proj+'"]').forEach(function(t){t.classList.remove('active');});
       document.querySelectorAll('.media-panel[data-proj="'+proj+'"]').forEach(function(p){p.classList.remove('active');});
       tab.classList.add('active');
@@ -377,35 +473,115 @@ function renderProjects() {
   });
 }
 
-function handleImageUpload(e,i){var f=e.target.files[0];if(!f)return;document.getElementById('img-el-'+i).src=URL.createObjectURL(f);document.getElementById('img-preview-'+i).classList.add('has-content');document.getElementById('img-zone-'+i).style.display='none';}
-function handleVideoUpload(e,i){var f=e.target.files[0];if(!f)return;document.getElementById('vid-el-'+i).src=URL.createObjectURL(f);document.getElementById('vid-preview-'+i).classList.add('has-content');document.getElementById('vid-zone-'+i).style.display='none';}
-function removeMedia(type,i){if(type==='img'){document.getElementById('img-el-'+i).src='';document.getElementById('img-preview-'+i).classList.remove('has-content');document.getElementById('img-zone-'+i).style.display='';}else{document.getElementById('vid-el-'+i).src='';document.getElementById('vid-preview-'+i).classList.remove('has-content');document.getElementById('vid-zone-'+i).style.display='';}}
-function embedUrl(i){var url=document.getElementById('url-input-'+i).value.trim();if(!url)return;url=url.replace('watch?v=','embed/').replace('youtu.be/','www.youtube.com/embed/');var frame=document.getElementById('url-embed-'+i);frame.src=url;frame.style.display='block';}
+function handleImageUpload(e,i){
+  var f=e.target.files[0];if(!f)return;
+  document.getElementById('img-el-'+i).src=URL.createObjectURL(f);
+  document.getElementById('img-preview-'+i).classList.add('has-content');
+  document.getElementById('img-zone-'+i).style.display='none';
+}
 
-function renderCerts(filter) {
-  filter = filter || 'all';
-  var grid = document.getElementById('certsGrid');
-  grid.innerHTML = '';
-  certs.filter(function(c){return filter==='all'||c.category===filter;}).forEach(function(c,idx) {
-    var id = 'cert-'+idx+'-'+c.issuer.replace(/\W/g,'');
-    var hasImage = !!c.image;
-    var statusLabel = c.status==='completed'?'Completed':c.status==='in-progress'?'In Progress':'Planned';
-    var card = document.createElement('div');
-    card.className = 'cert-card';
-    card.innerHTML = '<div class="cert-image-zone" onclick="triggerCertUpload(\''+id+'\')"><img id="'+id+'-img" src="'+(c.image||'')+'" alt="" '+(hasImage?'class="loaded"':'')+'/><div class="cert-placeholder" id="'+id+'-ph" style="'+(hasImage?'display:none':'')+'"><span class="cert-placeholder-icon">&#128196;</span><span class="cert-placeholder-text"><strong>Click to upload</strong><br/>certificate image</span></div><div class="cert-company-logo">'+c.company+'</div><input type="file" accept="image/*" id="'+id+'-input" class="cert-upload-input" onchange="handleCertUpload(event,\''+id+'\')"/></div><div class="cert-info"><div class="cert-name">'+c.name+'</div><div class="cert-issuer">'+c.issuer+'</div><div class="cert-bottom"><span class="cert-status '+c.status+'">'+statusLabel+'</span><button class="cert-view-btn '+(hasImage?'visible':'')+'" id="'+id+'-viewbtn" onclick="openModal(\''+id+'\')">View</button></div></div>';
+function handleFileUpload(e,i){
+  var f=e.target.files[0];if(!f)return;
+  var url=URL.createObjectURL(f);
+  document.getElementById('file-icon-'+i).textContent=getFileIcon(f.name);
+  document.getElementById('file-name-'+i).textContent=f.name;
+  document.getElementById('file-size-'+i).textContent=formatSize(f.size);
+  var dl=document.getElementById('file-dl-'+i);
+  dl.href=url;
+  dl.download=f.name;
+  document.getElementById('file-preview-'+i).classList.add('has-content');
+  document.getElementById('file-zone-'+i).style.display='none';
+}
+
+function handleVideoUpload(e,i){
+  var f=e.target.files[0];if(!f)return;
+  document.getElementById('vid-el-'+i).src=URL.createObjectURL(f);
+  document.getElementById('vid-preview-'+i).classList.add('has-content');
+  document.getElementById('vid-zone-'+i).style.display='none';
+}
+
+function removeMedia(type,i){
+  if(type==='img'){
+    document.getElementById('img-el-'+i).src='';
+    document.getElementById('img-preview-'+i).classList.remove('has-content');
+    document.getElementById('img-zone-'+i).style.display='';
+  } else if(type==='file'){
+    document.getElementById('file-preview-'+i).classList.remove('has-content');
+    document.getElementById('file-zone-'+i).style.display='';
+  } else {
+    document.getElementById('vid-el-'+i).src='';
+    document.getElementById('vid-preview-'+i).classList.remove('has-content');
+    document.getElementById('vid-zone-'+i).style.display='';
+  }
+}
+
+function embedUrl(i){
+  var url=document.getElementById('url-input-'+i).value.trim();
+  if(!url)return;
+  url=url.replace('watch?v=','embed/').replace('youtu.be/','www.youtube.com/embed/');
+  var frame=document.getElementById('url-embed-'+i);
+  frame.src=url;frame.style.display='block';
+}
+
+function renderCerts(filter){
+  filter=filter||'all';
+  var grid=document.getElementById('certsGrid');
+  grid.innerHTML='';
+  certs.filter(function(c){return filter==='all'||c.category===filter;}).forEach(function(c,idx){
+    var id='cert-'+idx+'-'+c.category;
+    var hasImage=!!c.image;
+    var statusLabel=c.status==='completed'?'Completed':c.status==='in-progress'?'In Progress':'Planned';
+    var card=document.createElement('div');
+    card.className='cert-card';
+    card.innerHTML=
+      '<div class="cert-image-zone" onclick="triggerCertUpload(\''+id+'\')">'+
+        '<img id="'+id+'-img" src="'+(c.image||'')+'" alt="" '+(hasImage?'class="loaded"':'')+' />'+
+        '<div class="cert-placeholder" id="'+id+'-ph" style="'+(hasImage?'display:none':'')+'" >'+
+          '<span class="cert-placeholder-icon">&#128196;</span>'+
+          '<span class="cert-placeholder-text"><strong>Click to upload</strong><br/>certificate image</span>'+
+        '</div>'+
+        '<div class="cert-company-logo">'+c.company+'</div>'+
+        '<input type="file" accept="image/*" id="'+id+'-input" class="cert-upload-input" onchange="handleCertUpload(event,\''+id+'\')" />'+
+      '</div>'+
+      '<div class="cert-info">'+
+        '<div class="cert-name">'+c.name+'</div>'+
+        '<div class="cert-issuer">'+c.issuer+'</div>'+
+        '<div class="cert-bottom">'+
+          '<span class="cert-status '+c.status+'">'+statusLabel+'</span>'+
+          '<button class="cert-view-btn '+(hasImage?'visible':'')+'" id="'+id+'-viewbtn" onclick="openModal(\''+id+'\')">View</button>'+
+        '</div>'+
+      '</div>';
     grid.appendChild(card);
   });
 }
 
 function triggerCertUpload(id){document.getElementById(id+'-input').click();}
-function handleCertUpload(e,id){var f=e.target.files[0];if(!f)return;var img=document.getElementById(id+'-img');img.src=URL.createObjectURL(f);img.classList.add('loaded');document.getElementById(id+'-ph').style.display='none';var btn=document.getElementById(id+'-viewbtn');if(btn)btn.classList.add('visible');}
-function openModal(id){document.getElementById('modalImg').src=document.getElementById(id+'-img').src;document.getElementById('modalOverlay').classList.add('open');}
+function handleCertUpload(e,id){
+  var f=e.target.files[0];if(!f)return;
+  var img=document.getElementById(id+'-img');
+  img.src=URL.createObjectURL(f);img.classList.add('loaded');
+  document.getElementById(id+'-ph').style.display='none';
+  var btn=document.getElementById(id+'-viewbtn');if(btn)btn.classList.add('visible');
+}
+function openModal(id){
+  document.getElementById('modalImg').src=document.getElementById(id+'-img').src;
+  document.getElementById('modalOverlay').classList.add('open');
+}
 
 document.getElementById('modalClose').addEventListener('click',function(){document.getElementById('modalOverlay').classList.remove('open');});
 document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===document.getElementById('modalOverlay'))document.getElementById('modalOverlay').classList.remove('open');});
-document.getElementById('certFilter').addEventListener('click',function(e){if(!e.target.classList.contains('cf-btn'))return;document.querySelectorAll('.cf-btn').forEach(function(b){b.classList.remove('active');});e.target.classList.add('active');renderCerts(e.target.dataset.filter);});
+document.getElementById('certFilter').addEventListener('click',function(e){
+  if(!e.target.classList.contains('cf-btn'))return;
+  document.querySelectorAll('.cf-btn').forEach(function(b){b.classList.remove('active');});
+  e.target.classList.add('active');
+  renderCerts(e.target.dataset.filter);
+});
 
-var observer = new IntersectionObserver(function(entries){entries.forEach(function(el,i){if(el.isIntersecting){setTimeout(function(){el.target.classList.add('visible');},i*70);observer.unobserve(el.target);}});},{threshold:0.08});
+var observer=new IntersectionObserver(function(entries){
+  entries.forEach(function(el,i){
+    if(el.isIntersecting){setTimeout(function(){el.target.classList.add('visible');},i*70);observer.unobserve(el.target);}
+  });
+},{threshold:0.08});
 function observeAll(){document.querySelectorAll('.reveal').forEach(function(el){observer.observe(el);});}
 
 renderProjects();
