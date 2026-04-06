@@ -60,6 +60,7 @@ h1 .acc{color:var(--accent)}
 .proj-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color 0.3s,box-shadow 0.3s}
 .proj-card:hover{border-color:var(--border2);box-shadow:0 20px 60px rgba(0,0,0,0.5)}
 .proj-card-inner{display:grid;grid-template-columns:1fr 380px}
+.proj-card-inner.no-media{grid-template-columns:1fr}
 .proj-info{padding:2.5rem}
 .proj-num{font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:800;color:rgba(255,255,255,0.05);line-height:1;margin-bottom:0.75rem}
 .proj-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.3rem;margin-bottom:0.5rem}
@@ -83,14 +84,12 @@ h1 .acc{color:var(--accent)}
 .upload-sub{font-size:0.67rem;color:var(--muted);opacity:0.55}
 .media-preview{width:100%;display:none;flex-direction:column;gap:0.75rem}
 .media-preview.has-content{display:flex}
-.preview-img{width:100%;border-radius:8px;max-height:200px;object-fit:cover}
-.preview-video{width:100%;border-radius:8px;max-height:200px}
 .file-preview-box{width:100%;background:rgba(232,255,71,0.05);border:1px solid rgba(232,255,71,0.15);border-radius:8px;padding:1rem 1.2rem;display:flex;align-items:center;gap:0.75rem}
 .file-preview-icon{font-size:1.5rem;flex-shrink:0}
 .file-preview-info{flex:1;min-width:0}
 .file-preview-name{font-size:0.82rem;color:var(--accent);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .file-preview-size{font-size:0.7rem;color:var(--muted);margin-top:0.15rem}
-.file-download-btn{display:inline-flex;align-items:center;gap:0.3rem;background:rgba(232,255,71,0.1);border:1px solid rgba(232,255,71,0.2);color:var(--accent);border-radius:6px;padding:0.4rem 0.8rem;font-size:0.72rem;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;transition:all 0.2s;flex-shrink:0}
+.file-download-btn{display:inline-flex;align-items:center;gap:0.3rem;background:rgba(232,255,71,0.1);border:1px solid rgba(232,255,71,0.2);color:var(--accent);border-radius:6px;padding:0.4rem 0.8rem;font-size:0.72rem;font-weight:500;text-decoration:none;transition:all 0.2s;flex-shrink:0}
 .file-download-btn:hover{background:rgba(232,255,71,0.18)}
 .remove-btn{font-size:0.72rem;color:var(--accent3);background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:0;opacity:0.7;align-self:flex-start}
 .remove-btn:hover{opacity:1}
@@ -101,6 +100,12 @@ h1 .acc{color:var(--accent)}
 .url-embed{width:100%;height:180px;border-radius:8px;border:none}
 .url-btn{background:rgba(232,255,71,0.1);border:1px solid rgba(232,255,71,0.2);color:var(--accent);border-radius:6px;padding:0.55rem 1rem;font-size:0.78rem;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s}
 .url-btn:hover{background:rgba(232,255,71,0.18)}
+.file-static-box{width:100%;background:rgba(232,255,71,0.05);border:1px solid rgba(232,255,71,0.15);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.75rem;padding:1.8rem 1.2rem;text-align:center}
+.file-static-icon{font-size:2.5rem}
+.file-static-name{font-size:0.82rem;color:var(--accent);font-weight:500}
+.file-static-desc{font-size:0.72rem;color:var(--muted);opacity:0.7}
+.file-static-btn{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(232,255,71,0.12);border:1px solid rgba(232,255,71,0.25);color:var(--accent);border-radius:6px;padding:0.5rem 1.1rem;font-size:0.78rem;font-weight:500;text-decoration:none;transition:all 0.2s}
+.file-static-btn:hover{background:rgba(232,255,71,0.22)}
 #certifications{background:var(--surface)}
 .certs-toggle-btn{display:inline-flex;align-items:center;gap:0.6rem;background:transparent;border:1px solid var(--border2);color:var(--muted);border-radius:8px;padding:0.75rem 1.5rem;font-size:0.85rem;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;margin-bottom:2rem}
 .certs-toggle-btn:hover{border-color:var(--accent);color:var(--accent)}
@@ -326,11 +331,67 @@ footer{border-top:1px solid var(--border);padding:1.8rem 4rem;display:flex;justi
 </div>
 
 <script>
+// mediaType:
+//   'fileonly'   = static download box only, no tabs
+//   'filelink'   = File upload + Link tabs
+//   'none'       = no media panel, full width card
+
 var projects = [
-  {num:'01',name:'Equity Valuation Analysis',stack:'Python / Excel / R',desc:'Full intrinsic valuation using DCF with scenario analysis, trading comps, and precedent transactions.',bullets:['Built a multi-scenario DCF model to estimate intrinsic value against a 52-week trading range','Derived implied share price range using EV/EBITDA and P/E comps across comparable public companies','Triangulated via precedent transaction analysis to benchmark acquisition premiums and fair value']},
-  {num:'02',name:'Fleet Risk Optimization',stack:'MySQL / NumPy / Excel',desc:'Modeled fleet insurance costs and liabilities to pinpoint financial inefficiencies and reduce exposure.',bullets:['Built P&L summaries and a risk-scoring algorithm to flag cost bottlenecks','Ran financial statement analysis across income statements and balance sheets','Reduced modeled financial exposure through data-driven capital allocation recommendations']},
-  {num:'03',name:'Market Risk Assessment',stack:'R / Global Market Research',desc:'Analyzed 1,000+ global market data points to identify pricing inefficiencies and macroeconomic trends.',bullets:['Identified pricing inefficiencies across global datasets using statistical modeling in R','Proposed solutions showing a potential 10% improvement in resource allocation efficiency','Synthesized macroeconomic trends into actionable strategic recommendations']},
-  {num:'04',name:'Pawgress',stack:'Java / Scene Builder / Git',desc:'Interactive app with AI-powered behavior analysis to improve user engagement and retention.',bullets:['Built with JavaFX and Scene Builder for a responsive, intuitive interface','Integrated AI behavior analysis module to personalize user experience','Set up automated testing feedback loops to accelerate feature delivery']}
+  {
+    num:'01', name:'Value at Risk (VaR) Calculator', stack:'Excel / Financial Modeling / Statistics',
+    desc:'Interactive Excel tool that calculates maximum expected portfolio loss using two industry-standard risk models side by side — no macros needed.',
+    bullets:[
+      'Implemented Historical VaR and Parametric VaR methods with a 50-observation return dataset, confidence levels of 90/95/99%, and multi-day horizons up to 252 days (annual)',
+      'Applied the square-root-of-time rule for multi-day parametric scaling and computed full statistical summary — mean, std dev, skewness, kurtosis',
+      'Built dynamic return distribution histogram with red-shaded VaR loss-tail and side-by-side bar chart comparing both methods in dollar and percentage terms'
+    ],
+    mediaType:'fileonly',
+    staticFile:{path:'projects/VAR-Calculator.xlsx',label:'VAR-Calculator.xlsx',icon:'📊',desc:'Excel — no macros needed'}
+  },
+  {
+    num:'02', name:'Equity Valuation Analysis', stack:'Python / Excel / R',
+    desc:'Full intrinsic valuation using DCF with scenario analysis, trading comps, and precedent transactions.',
+    bullets:[
+      'Built a multi-scenario DCF model to estimate intrinsic value against a 52-week trading range',
+      'Derived implied share price range using EV/EBITDA and P/E comps across comparable public companies',
+      'Triangulated via precedent transaction analysis to benchmark acquisition premiums and fair value'
+    ],
+    mediaType:'filelink',
+    staticFile:null
+  },
+  {
+    num:'03', name:'Pawgress', stack:'Java / Scene Builder / Git',
+    desc:'Interactive app with AI-powered behavior analysis to improve user engagement and retention.',
+    bullets:[
+      'Built with JavaFX and Scene Builder for a responsive, intuitive interface',
+      'Integrated AI behavior analysis module to personalize user experience',
+      'Set up automated testing feedback loops to accelerate feature delivery'
+    ],
+    mediaType:'none',
+    staticFile:null
+  },
+  {
+    num:'04', name:'Fleet Risk Optimization', stack:'MySQL / NumPy / Excel',
+    desc:'Modeled fleet insurance costs and liabilities to pinpoint financial inefficiencies and reduce exposure.',
+    bullets:[
+      'Built P&L summaries and a risk-scoring algorithm to flag cost bottlenecks',
+      'Ran financial statement analysis across income statements and balance sheets',
+      'Reduced modeled financial exposure through data-driven capital allocation recommendations'
+    ],
+    mediaType:'none',
+    staticFile:null
+  },
+  {
+    num:'05', name:'Market Risk Assessment', stack:'R / Global Market Research',
+    desc:'Analyzed 1,000+ global market data points to identify pricing inefficiencies and macroeconomic trends.',
+    bullets:[
+      'Identified pricing inefficiencies across global datasets using statistical modeling in R',
+      'Proposed solutions showing a potential 10% improvement in resource allocation efficiency',
+      'Synthesized macroeconomic trends into actionable strategic recommendations'
+    ],
+    mediaType:'none',
+    staticFile:null
+  }
 ];
 
 var certs = [
@@ -373,11 +434,64 @@ function getFileIcon(name){
   if(ext==='pptx'||ext==='ppt')return '📑';
   return '📁';
 }
-
 function formatSize(bytes){
   if(bytes<1024)return bytes+'B';
   if(bytes<1048576)return (bytes/1024).toFixed(1)+'KB';
   return (bytes/1048576).toFixed(1)+'MB';
+}
+
+function buildMedia(p,i){
+  if(p.mediaType==='none') return '';
+
+  if(p.mediaType==='fileonly'){
+    return '<div class="proj-media">'+
+      '<div class="media-panel active" style="display:flex">'+
+        '<div class="file-static-box">'+
+          '<div class="file-static-icon">'+p.staticFile.icon+'</div>'+
+          '<div class="file-static-name">'+p.staticFile.label+'</div>'+
+          '<div class="file-static-desc">'+p.staticFile.desc+'</div>'+
+          '<a class="file-static-btn" href="'+p.staticFile.path+'" download>&#8595; Download</a>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }
+
+  if(p.mediaType==='filelink'){
+    return '<div class="proj-media">'+
+      '<div class="media-tabs">'+
+        '<button class="media-tab active" data-tab="file" data-proj="'+i+'">File</button>'+
+        '<button class="media-tab" data-tab="link" data-proj="'+i+'">Link</button>'+
+      '</div>'+
+      '<div class="media-panel active" data-panel="file" data-proj="'+i+'">'+
+        '<div class="media-preview" id="file-preview-'+i+'">'+
+          '<div class="file-preview-box">'+
+            '<span class="file-preview-icon" id="file-icon-'+i+'">📁</span>'+
+            '<div class="file-preview-info">'+
+              '<div class="file-preview-name" id="file-name-'+i+'"></div>'+
+              '<div class="file-preview-size" id="file-size-'+i+'"></div>'+
+            '</div>'+
+            '<a class="file-download-btn" id="file-dl-'+i+'" href="#" download>&#8595; Open</a>'+
+          '</div>'+
+          '<button class="remove-btn" onclick="removeMedia(\'file\','+i+')">&#10005; Remove</button>'+
+        '</div>'+
+        '<label class="upload-zone" id="file-zone-'+i+'">'+
+          '<input type="file" accept=".xlsx,.xls,.csv,.pdf,.pptx,.ppt,.docx,.doc" onchange="handleFileUpload(event,'+i+')"/>'+
+          '<span class="upload-icon">&#128202;</span>'+
+          '<span class="upload-label"><strong>Upload your file</strong></span>'+
+          '<span class="upload-sub">Excel, PDF, CSV, PowerPoint</span>'+
+        '</label>'+
+      '</div>'+
+      '<div class="media-panel" data-panel="link" data-proj="'+i+'">'+
+        '<div class="url-input-wrap">'+
+          '<input class="url-input" id="url-input-'+i+'" type="url" placeholder="Paste YouTube or GitHub URL..."/>'+
+          '<button class="url-btn" onclick="embedUrl('+i+')">Embed</button>'+
+          '<iframe class="url-embed" id="url-embed-'+i+'" src="" style="display:none" allowfullscreen></iframe>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }
+
+  return '';
 }
 
 function renderProjects(){
@@ -385,9 +499,10 @@ function renderProjects(){
   projects.forEach(function(p,i){
     var card=document.createElement('div');
     card.className='proj-card reveal';
+    var noMedia=p.mediaType==='none';
     var bullets=p.bullets.map(function(b){return '<li>'+b+'</li>';}).join('');
     card.innerHTML=
-      '<div class="proj-card-inner">'+
+      '<div class="proj-card-inner'+(noMedia?' no-media':'')+'">'+
         '<div class="proj-info">'+
           '<div class="proj-num">'+p.num+'</div>'+
           '<div class="proj-name">'+p.name+'</div>'+
@@ -395,68 +510,7 @@ function renderProjects(){
           '<div class="proj-desc">'+p.desc+'</div>'+
           '<ul class="proj-bullets">'+bullets+'</ul>'+
         '</div>'+
-        '<div class="proj-media">'+
-          '<div class="media-tabs">'+
-            '<button class="media-tab active" data-tab="image" data-proj="'+i+'">Image</button>'+
-            '<button class="media-tab" data-tab="file" data-proj="'+i+'">File</button>'+
-            '<button class="media-tab" data-tab="video" data-proj="'+i+'">Video</button>'+
-            '<button class="media-tab" data-tab="link" data-proj="'+i+'">Link</button>'+
-          '</div>'+
-          // IMAGE TAB
-          '<div class="media-panel active" data-panel="image" data-proj="'+i+'">'+
-            '<div class="media-preview" id="img-preview-'+i+'">'+
-              '<img class="preview-img" id="img-el-'+i+'" src="" alt=""/>'+
-              '<button class="remove-btn" onclick="removeMedia(\'img\','+i+')">&#10005; Remove</button>'+
-            '</div>'+
-            '<label class="upload-zone" id="img-zone-'+i+'">'+
-              '<input type="file" accept="image/*" onchange="handleImageUpload(event,'+i+')"/>'+
-              '<span class="upload-icon">&#128444;</span>'+
-              '<span class="upload-label"><strong>Upload your image</strong></span>'+
-              '<span class="upload-sub">PNG, JPG, GIF &mdash; any image you have</span>'+
-            '</label>'+
-          '</div>'+
-          // FILE TAB
-          '<div class="media-panel" data-panel="file" data-proj="'+i+'">'+
-            '<div class="media-preview" id="file-preview-'+i+'">'+
-              '<div class="file-preview-box">'+
-                '<span class="file-preview-icon" id="file-icon-'+i+'">📁</span>'+
-                '<div class="file-preview-info">'+
-                  '<div class="file-preview-name" id="file-name-'+i+'"></div>'+
-                  '<div class="file-preview-size" id="file-size-'+i+'"></div>'+
-                '</div>'+
-                '<a class="file-download-btn" id="file-dl-'+i+'" href="#" download>&#8595; Open</a>'+
-              '</div>'+
-              '<button class="remove-btn" onclick="removeMedia(\'file\','+i+')">&#10005; Remove</button>'+
-            '</div>'+
-            '<label class="upload-zone" id="file-zone-'+i+'">'+
-              '<input type="file" accept=".xlsx,.xls,.csv,.pdf,.pptx,.ppt,.docx,.doc" onchange="handleFileUpload(event,'+i+')"/>'+
-              '<span class="upload-icon">&#128202;</span>'+
-              '<span class="upload-label"><strong>Upload your file</strong></span>'+
-              '<span class="upload-sub">Excel, PDF, CSV, PowerPoint &mdash; any document</span>'+
-            '</label>'+
-          '</div>'+
-          // VIDEO TAB
-          '<div class="media-panel" data-panel="video" data-proj="'+i+'">'+
-            '<div class="media-preview" id="vid-preview-'+i+'">'+
-              '<video class="preview-video" id="vid-el-'+i+'" controls></video>'+
-              '<button class="remove-btn" onclick="removeMedia(\'vid\','+i+')">&#10005; Remove</button>'+
-            '</div>'+
-            '<label class="upload-zone" id="vid-zone-'+i+'">'+
-              '<input type="file" accept="video/*" onchange="handleVideoUpload(event,'+i+')"/>'+
-              '<span class="upload-icon">&#127909;</span>'+
-              '<span class="upload-label"><strong>Upload a demo video</strong></span>'+
-              '<span class="upload-sub">MP4, MOV, WebM</span>'+
-            '</label>'+
-          '</div>'+
-          // LINK TAB
-          '<div class="media-panel" data-panel="link" data-proj="'+i+'">'+
-            '<div class="url-input-wrap">'+
-              '<input class="url-input" id="url-input-'+i+'" type="url" placeholder="Paste YouTube or GitHub URL..."/>'+
-              '<button class="url-btn" onclick="embedUrl('+i+')">Embed</button>'+
-              '<iframe class="url-embed" id="url-embed-'+i+'" src="" style="display:none" allowfullscreen></iframe>'+
-            '</div>'+
-          '</div>'+
-        '</div>'+
+        buildMedia(p,i)+
       '</div>';
     container.appendChild(card);
   });
@@ -473,55 +527,11 @@ function renderProjects(){
   });
 }
 
-function handleImageUpload(e,i){
-  var f=e.target.files[0];if(!f)return;
-  document.getElementById('img-el-'+i).src=URL.createObjectURL(f);
-  document.getElementById('img-preview-'+i).classList.add('has-content');
-  document.getElementById('img-zone-'+i).style.display='none';
-}
-
-function handleFileUpload(e,i){
-  var f=e.target.files[0];if(!f)return;
-  var url=URL.createObjectURL(f);
-  document.getElementById('file-icon-'+i).textContent=getFileIcon(f.name);
-  document.getElementById('file-name-'+i).textContent=f.name;
-  document.getElementById('file-size-'+i).textContent=formatSize(f.size);
-  var dl=document.getElementById('file-dl-'+i);
-  dl.href=url;
-  dl.download=f.name;
-  document.getElementById('file-preview-'+i).classList.add('has-content');
-  document.getElementById('file-zone-'+i).style.display='none';
-}
-
-function handleVideoUpload(e,i){
-  var f=e.target.files[0];if(!f)return;
-  document.getElementById('vid-el-'+i).src=URL.createObjectURL(f);
-  document.getElementById('vid-preview-'+i).classList.add('has-content');
-  document.getElementById('vid-zone-'+i).style.display='none';
-}
-
+function handleFileUpload(e,i){var f=e.target.files[0];if(!f)return;var url=URL.createObjectURL(f);document.getElementById('file-icon-'+i).textContent=getFileIcon(f.name);document.getElementById('file-name-'+i).textContent=f.name;document.getElementById('file-size-'+i).textContent=formatSize(f.size);var dl=document.getElementById('file-dl-'+i);dl.href=url;dl.download=f.name;document.getElementById('file-preview-'+i).classList.add('has-content');document.getElementById('file-zone-'+i).style.display='none';}
 function removeMedia(type,i){
-  if(type==='img'){
-    document.getElementById('img-el-'+i).src='';
-    document.getElementById('img-preview-'+i).classList.remove('has-content');
-    document.getElementById('img-zone-'+i).style.display='';
-  } else if(type==='file'){
-    document.getElementById('file-preview-'+i).classList.remove('has-content');
-    document.getElementById('file-zone-'+i).style.display='';
-  } else {
-    document.getElementById('vid-el-'+i).src='';
-    document.getElementById('vid-preview-'+i).classList.remove('has-content');
-    document.getElementById('vid-zone-'+i).style.display='';
-  }
+  if(type==='file'){document.getElementById('file-preview-'+i).classList.remove('has-content');document.getElementById('file-zone-'+i).style.display='';}
 }
-
-function embedUrl(i){
-  var url=document.getElementById('url-input-'+i).value.trim();
-  if(!url)return;
-  url=url.replace('watch?v=','embed/').replace('youtu.be/','www.youtube.com/embed/');
-  var frame=document.getElementById('url-embed-'+i);
-  frame.src=url;frame.style.display='block';
-}
+function embedUrl(i){var url=document.getElementById('url-input-'+i).value.trim();if(!url)return;url=url.replace('watch?v=','embed/').replace('youtu.be/','www.youtube.com/embed/');var frame=document.getElementById('url-embed-'+i);frame.src=url;frame.style.display='block';}
 
 function renderCerts(filter){
   filter=filter||'all';
@@ -556,17 +566,8 @@ function renderCerts(filter){
 }
 
 function triggerCertUpload(id){document.getElementById(id+'-input').click();}
-function handleCertUpload(e,id){
-  var f=e.target.files[0];if(!f)return;
-  var img=document.getElementById(id+'-img');
-  img.src=URL.createObjectURL(f);img.classList.add('loaded');
-  document.getElementById(id+'-ph').style.display='none';
-  var btn=document.getElementById(id+'-viewbtn');if(btn)btn.classList.add('visible');
-}
-function openModal(id){
-  document.getElementById('modalImg').src=document.getElementById(id+'-img').src;
-  document.getElementById('modalOverlay').classList.add('open');
-}
+function handleCertUpload(e,id){var f=e.target.files[0];if(!f)return;var img=document.getElementById(id+'-img');img.src=URL.createObjectURL(f);img.classList.add('loaded');document.getElementById(id+'-ph').style.display='none';var btn=document.getElementById(id+'-viewbtn');if(btn)btn.classList.add('visible');}
+function openModal(id){document.getElementById('modalImg').src=document.getElementById(id+'-img').src;document.getElementById('modalOverlay').classList.add('open');}
 
 document.getElementById('modalClose').addEventListener('click',function(){document.getElementById('modalOverlay').classList.remove('open');});
 document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===document.getElementById('modalOverlay'))document.getElementById('modalOverlay').classList.remove('open');});
