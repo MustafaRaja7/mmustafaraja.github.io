@@ -106,6 +106,16 @@ h1 .acc{color:var(--accent)}
 .file-static-desc{font-size:0.72rem;color:var(--muted);opacity:0.7}
 .file-static-btn{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(232,255,71,0.12);border:1px solid rgba(232,255,71,0.25);color:var(--accent);border-radius:6px;padding:0.5rem 1.1rem;font-size:0.78rem;font-weight:500;text-decoration:none;transition:all 0.2s}
 .file-static-btn:hover{background:rgba(232,255,71,0.22)}
+.video-wrap{width:100%;padding:1rem;display:flex;align-items:center;justify-content:center}
+.video-wrap video{width:100%;border-radius:8px;max-height:240px;background:#000;display:block}
+.pw-wrap{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:1.5rem;text-align:center}
+.pw-label{font-size:0.78rem;color:var(--muted);letter-spacing:0.05em}
+.pw-input{background:rgba(255,255,255,0.04);border:1px solid var(--border2);border-radius:6px;padding:0.6rem 1rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;width:100%;max-width:200px;text-align:center;transition:border-color 0.2s}
+.pw-input:focus{border-color:rgba(232,255,71,0.4)}
+.pw-btn{background:rgba(232,255,71,0.1);border:1px solid rgba(232,255,71,0.2);color:var(--accent);border-radius:6px;padding:0.5rem 1.2rem;font-size:0.78rem;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s}
+.pw-btn:hover{background:rgba(232,255,71,0.2)}
+.pw-error{font-size:0.72rem;color:var(--accent3);display:none}
+.pw-video{width:100%;border-radius:8px;border:none;height:220px;display:none}
 #certifications{background:var(--surface)}
 .certs-toggle-btn{display:inline-flex;align-items:center;gap:0.6rem;background:transparent;border:1px solid var(--border2);color:var(--muted);border-radius:8px;padding:0.75rem 1.5rem;font-size:0.85rem;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;margin-bottom:2rem}
 .certs-toggle-btn:hover{border-color:var(--accent);color:var(--accent)}
@@ -331,14 +341,11 @@ footer{border-top:1px solid var(--border);padding:1.8rem 4rem;display:flex;justi
 </div>
 
 <script>
-// mediaType:
-//   'fileonly'   = static download box only, no tabs
-//   'filelink'   = File upload + Link tabs
-//   'none'       = no media panel, full width card
-
 var projects = [
   {
-    num:'01', name:'Value at Risk (VaR) Calculator', stack:'Excel / Financial Modeling / Statistics',
+    num:'01',
+    name:'Value at Risk (VaR) Calculator',
+    stack:'Excel / Financial Modeling / Statistics',
     desc:'Interactive Excel tool that calculates maximum expected portfolio loss using two industry-standard risk models side by side — no macros needed.',
     bullets:[
       'Implemented Historical VaR and Parametric VaR methods with a 50-observation return dataset, confidence levels of 90/95/99%, and multi-day horizons up to 252 days (annual)',
@@ -346,32 +353,51 @@ var projects = [
       'Built dynamic return distribution histogram with red-shaded VaR loss-tail and side-by-side bar chart comparing both methods in dollar and percentage terms'
     ],
     mediaType:'fileonly',
-    staticFile:{path:'projects/VAR-Calculator.xlsx',label:'VAR-Calculator.xlsx',icon:'📊',desc:'Excel — no macros needed'}
+    staticFile:{path:'projects/VAR-Calculator.xlsx',label:'VAR-Calculator.xlsx',icon:'SS',desc:'Excel — no macros needed'}
   },
   {
-    num:'02', name:'Equity Valuation Analysis', stack:'Python / Excel / R',
+    num:'02',
+    name:'CVaR Portfolio Optimizer',
+    stack:'Python / PuLP / Streamlit / yFinance',
+    desc:'Mean-CVaR portfolio optimizer using linear programming to build an efficient frontier across user-selected ETFs and identify the maximum STAR ratio (return/CVaR) allocation.',
+    bullets:[
+      'Built a Mean-CVaR LP optimizer using PuLP to generate an efficient frontier across ETFs, identifying the max STAR ratio portfolio with optimal risk-adjusted return',
+      'Implemented per-asset min/max weight constraints allowing manual control over allocations, with the solver automatically re-optimizing within those bounds',
+      'Added a manual portfolio evaluator where users input custom weights via sliders and instantly receive expected return, CVaR, STAR ratio, and annualized return metrics'
+    ],
+    mediaType:'videoonly',
+    staticFile:{path:'projects/CVAR-Optimization.mp4',label:'CVAR-Optimization.mp4',icon:'VV',desc:'Demo walkthrough'}
+  },
+  {
+    num:'03',
+    name:'Equity Valuation Analysis',
+    stack:'Python / Excel / R',
     desc:'Full intrinsic valuation using DCF with scenario analysis, trading comps, and precedent transactions.',
     bullets:[
       'Built a multi-scenario DCF model to estimate intrinsic value against a 52-week trading range',
       'Derived implied share price range using EV/EBITDA and P/E comps across comparable public companies',
       'Triangulated via precedent transaction analysis to benchmark acquisition premiums and fair value'
     ],
-    mediaType:'filelink',
+    mediaType:'none',
     staticFile:null
   },
   {
-    num:'03', name:'Pawgress', stack:'Java / Scene Builder / Git',
+    num:'04',
+    name:'Pawgress',
+    stack:'Java / Scene Builder / Git',
     desc:'Interactive app with AI-powered behavior analysis to improve user engagement and retention.',
     bullets:[
       'Built with JavaFX and Scene Builder for a responsive, intuitive interface',
       'Integrated AI behavior analysis module to personalize user experience',
       'Set up automated testing feedback loops to accelerate feature delivery'
     ],
-    mediaType:'none',
-    staticFile:null
+    mediaType:'password',
+    staticFile:{path:'https://www.youtube.com/embed/KNJNiHw2Fn4',label:'paw',icon:'',desc:''}
   },
   {
-    num:'04', name:'Fleet Risk Optimization', stack:'MySQL / NumPy / Excel',
+    num:'05',
+    name:'Fleet Risk Optimization',
+    stack:'MySQL / NumPy / Excel',
     desc:'Modeled fleet insurance costs and liabilities to pinpoint financial inefficiencies and reduce exposure.',
     bullets:[
       'Built P&L summaries and a risk-scoring algorithm to flag cost bottlenecks',
@@ -382,7 +408,9 @@ var projects = [
     staticFile:null
   },
   {
-    num:'05', name:'Market Risk Assessment', stack:'R / Global Market Research',
+    num:'06',
+    name:'Market Risk Assessment',
+    stack:'R / Global Market Research',
     desc:'Analyzed 1,000+ global market data points to identify pricing inefficiencies and macroeconomic trends.',
     bullets:[
       'Identified pricing inefficiencies across global datasets using statistical modeling in R',
@@ -422,168 +450,287 @@ var certs = [
 function toggleCerts(){
   var body=document.getElementById('certsBody');
   var btn=document.getElementById('certsToggleBtn');
-  if(body.style.display==='block'){body.style.display='none';btn.innerHTML='Show Certifications &#8595;';}
-  else{body.style.display='block';btn.innerHTML='Hide Certifications &#8593;';}
+  if(body.style.display==='block'){
+    body.style.display='none';
+    btn.innerHTML='Show Certifications &#8595;';
+  } else {
+    body.style.display='block';
+    btn.innerHTML='Hide Certifications &#8593;';
+  }
 }
 
 function getFileIcon(name){
   var ext=name.split('.').pop().toLowerCase();
-  if(ext==='xlsx'||ext==='xls')return '📊';
-  if(ext==='pdf')return '📄';
-  if(ext==='csv')return '📋';
-  if(ext==='pptx'||ext==='ppt')return '📑';
+  if(ext==='xlsx'||ext==='xls'){return '📊';}
+  if(ext==='pdf'){return '📄';}
+  if(ext==='csv'){return '📋';}
+  if(ext==='pptx'||ext==='ppt'){return '📑';}
   return '📁';
 }
+
 function formatSize(bytes){
-  if(bytes<1024)return bytes+'B';
-  if(bytes<1048576)return (bytes/1024).toFixed(1)+'KB';
+  if(bytes<1024){return bytes+'B';}
+  if(bytes<1048576){return (bytes/1024).toFixed(1)+'KB';}
   return (bytes/1048576).toFixed(1)+'MB';
 }
 
 function buildMedia(p,i){
-  if(p.mediaType==='none') return '';
+  var html='';
+
+  if(p.mediaType==='none'){
+    return '';
+  }
 
   if(p.mediaType==='fileonly'){
-    return '<div class="proj-media">'+
-      '<div class="media-panel active" style="display:flex">'+
-        '<div class="file-static-box">'+
-          '<div class="file-static-icon">'+p.staticFile.icon+'</div>'+
-          '<div class="file-static-name">'+p.staticFile.label+'</div>'+
-          '<div class="file-static-desc">'+p.staticFile.desc+'</div>'+
-          '<a class="file-static-btn" href="'+p.staticFile.path+'" download>&#8595; Download</a>'+
-        '</div>'+
-      '</div>'+
-    '</div>';
+    html='<div class="proj-media">';
+    html+='<div class="media-panel active" style="display:flex">';
+    html+='<div class="file-static-box">';
+    html+='<div class="file-static-icon">&#128202;</div>';
+    html+='<div class="file-static-name">'+p.staticFile.label+'</div>';
+    html+='<div class="file-static-desc">'+p.staticFile.desc+'</div>';
+    html+='<a class="file-static-btn" href="'+p.staticFile.path+'" download>&#8595; Download</a>';
+    html+='</div></div></div>';
+    return html;
+  }
+
+  if(p.mediaType==='videoonly'){
+    html='<div class="proj-media">';
+    html+='<div class="media-panel active" style="display:flex">';
+    html+='<div class="video-wrap">';
+    html+='<video controls>';
+    html+='<source src="'+p.staticFile.path+'" type="video/mp4">';
+    html+='</video>';
+    html+='</div></div></div>';
+    return html;
+  }
+
+  if(p.mediaType==='password'){
+    html='<div class="proj-media">';
+    html+='<div class="media-panel active" style="display:flex">';
+    html+='<div class="pw-wrap">';
+    html+='<div class="pw-label">&#128274; Enter password to view demo</div>';
+    html+='<input class="pw-input" type="password" id="pw-input-'+i+'" placeholder="password" onkeydown="if(event.key===\'Enter\')checkPw('+i+')">';
+    html+='<button class="pw-btn" onclick="checkPw('+i+')">Unlock</button>';
+    html+='<div class="pw-error" id="pw-error-'+i+'">Incorrect password</div>';
+    html+='<iframe class="pw-video" id="pw-video-'+i+'" src="" allowfullscreen></iframe>';
+    html+='</div>';
+    html+='</div></div>';
+    return html;
   }
 
   if(p.mediaType==='filelink'){
-    return '<div class="proj-media">'+
-      '<div class="media-tabs">'+
-        '<button class="media-tab active" data-tab="file" data-proj="'+i+'">File</button>'+
-        '<button class="media-tab" data-tab="link" data-proj="'+i+'">Link</button>'+
-      '</div>'+
-      '<div class="media-panel active" data-panel="file" data-proj="'+i+'">'+
-        '<div class="media-preview" id="file-preview-'+i+'">'+
-          '<div class="file-preview-box">'+
-            '<span class="file-preview-icon" id="file-icon-'+i+'">📁</span>'+
-            '<div class="file-preview-info">'+
-              '<div class="file-preview-name" id="file-name-'+i+'"></div>'+
-              '<div class="file-preview-size" id="file-size-'+i+'"></div>'+
-            '</div>'+
-            '<a class="file-download-btn" id="file-dl-'+i+'" href="#" download>&#8595; Open</a>'+
-          '</div>'+
-          '<button class="remove-btn" onclick="removeMedia(\'file\','+i+')">&#10005; Remove</button>'+
-        '</div>'+
-        '<label class="upload-zone" id="file-zone-'+i+'">'+
-          '<input type="file" accept=".xlsx,.xls,.csv,.pdf,.pptx,.ppt,.docx,.doc" onchange="handleFileUpload(event,'+i+')"/>'+
-          '<span class="upload-icon">&#128202;</span>'+
-          '<span class="upload-label"><strong>Upload your file</strong></span>'+
-          '<span class="upload-sub">Excel, PDF, CSV, PowerPoint</span>'+
-        '</label>'+
-      '</div>'+
-      '<div class="media-panel" data-panel="link" data-proj="'+i+'">'+
-        '<div class="url-input-wrap">'+
-          '<input class="url-input" id="url-input-'+i+'" type="url" placeholder="Paste YouTube or GitHub URL..."/>'+
-          '<button class="url-btn" onclick="embedUrl('+i+')">Embed</button>'+
-          '<iframe class="url-embed" id="url-embed-'+i+'" src="" style="display:none" allowfullscreen></iframe>'+
-        '</div>'+
-      '</div>'+
-    '</div>';
+    html='<div class="proj-media">';
+    html+='<div class="media-tabs">';
+    html+='<button class="media-tab active" data-tab="file" data-proj="'+i+'">File</button>';
+    html+='<button class="media-tab" data-tab="link" data-proj="'+i+'">Link</button>';
+    html+='</div>';
+    html+='<div class="media-panel active" data-panel="file" data-proj="'+i+'">';
+    html+='<div class="media-preview" id="file-preview-'+i+'">';
+    html+='<div class="file-preview-box">';
+    html+='<span class="file-preview-icon" id="file-icon-'+i+'">📁</span>';
+    html+='<div class="file-preview-info">';
+    html+='<div class="file-preview-name" id="file-name-'+i+'"></div>';
+    html+='<div class="file-preview-size" id="file-size-'+i+'"></div>';
+    html+='</div>';
+    html+='<a class="file-download-btn" id="file-dl-'+i+'" href="#" download>&#8595; Open</a>';
+    html+='</div>';
+    html+='<button class="remove-btn" onclick="removeMedia(\'file\','+i+')">&#10005; Remove</button>';
+    html+='</div>';
+    html+='<label class="upload-zone" id="file-zone-'+i+'">';
+    html+='<input type="file" accept=".xlsx,.xls,.csv,.pdf,.pptx,.ppt,.docx,.doc" onchange="handleFileUpload(event,'+i+')">';
+    html+='<span class="upload-icon">&#128202;</span>';
+    html+='<span class="upload-label"><strong>Upload your file</strong></span>';
+    html+='<span class="upload-sub">Excel, PDF, CSV, PowerPoint</span>';
+    html+='</label>';
+    html+='</div>';
+    html+='<div class="media-panel" data-panel="link" data-proj="'+i+'">';
+    html+='<div class="url-input-wrap">';
+    html+='<input class="url-input" id="url-input-'+i+'" type="url" placeholder="Paste YouTube or GitHub URL...">';
+    html+='<button class="url-btn" onclick="embedUrl('+i+')">Embed</button>';
+    html+='<iframe class="url-embed" id="url-embed-'+i+'" src="" style="display:none" allowfullscreen></iframe>';
+    html+='</div>';
+    html+='</div>';
+    html+='</div>';
+    return html;
   }
 
   return '';
 }
 
+function checkPw(i){
+  var input=document.getElementById('pw-input-'+i);
+  var error=document.getElementById('pw-error-'+i);
+  var video=document.getElementById('pw-video-'+i);
+  var pw=projects[i].staticFile.label;
+  if(input.value===pw){
+    error.style.display='none';
+    input.style.display='none';
+    document.querySelector('#pw-input-'+i).previousElementSibling.style.display='none';
+    var btn=input.nextElementSibling;
+    btn.style.display='none';
+    video.src=projects[i].staticFile.path;
+    video.style.display='block';
+  } else {
+    error.style.display='block';
+    input.value='';
+  }
+}
+
 function renderProjects(){
   var container=document.getElementById('projectsList');
-  projects.forEach(function(p,i){
+  for(var i=0;i<projects.length;i++){
+    var p=projects[i];
     var card=document.createElement('div');
     card.className='proj-card reveal';
-    var noMedia=p.mediaType==='none';
-    var bullets=p.bullets.map(function(b){return '<li>'+b+'</li>';}).join('');
-    card.innerHTML=
-      '<div class="proj-card-inner'+(noMedia?' no-media':'')+'">'+
-        '<div class="proj-info">'+
-          '<div class="proj-num">'+p.num+'</div>'+
-          '<div class="proj-name">'+p.name+'</div>'+
-          '<div class="proj-stack">'+p.stack+'</div>'+
-          '<div class="proj-desc">'+p.desc+'</div>'+
-          '<ul class="proj-bullets">'+bullets+'</ul>'+
-        '</div>'+
-        buildMedia(p,i)+
-      '</div>';
+    var noMedia=(p.mediaType==='none');
+    var bullets='';
+    for(var b=0;b<p.bullets.length;b++){
+      bullets+='<li>'+p.bullets[b]+'</li>';
+    }
+    var inner='<div class="proj-card-inner'+(noMedia?' no-media':'')+'"><div class="proj-info">';
+    inner+='<div class="proj-num">'+p.num+'</div>';
+    inner+='<div class="proj-name">'+p.name+'</div>';
+    inner+='<div class="proj-stack">'+p.stack+'</div>';
+    inner+='<div class="proj-desc">'+p.desc+'</div>';
+    inner+='<ul class="proj-bullets">'+bullets+'</ul>';
+    inner+='</div>'+buildMedia(p,i)+'</div>';
+    card.innerHTML=inner;
     container.appendChild(card);
-  });
+  }
 
-  document.querySelectorAll('.media-tab').forEach(function(tab){
-    tab.addEventListener('click',function(){
-      var proj=tab.dataset.proj;
-      var tabName=tab.dataset.tab;
-      document.querySelectorAll('.media-tab[data-proj="'+proj+'"]').forEach(function(t){t.classList.remove('active');});
-      document.querySelectorAll('.media-panel[data-proj="'+proj+'"]').forEach(function(p){p.classList.remove('active');});
-      tab.classList.add('active');
+  var tabs=document.querySelectorAll('.media-tab');
+  for(var t=0;t<tabs.length;t++){
+    tabs[t].addEventListener('click',function(){
+      var proj=this.dataset.proj;
+      var tabName=this.dataset.tab;
+      var allTabs=document.querySelectorAll('.media-tab[data-proj="'+proj+'"]');
+      var allPanels=document.querySelectorAll('.media-panel[data-proj="'+proj+'"]');
+      for(var x=0;x<allTabs.length;x++){allTabs[x].classList.remove('active');}
+      for(var x=0;x<allPanels.length;x++){allPanels[x].classList.remove('active');}
+      this.classList.add('active');
       document.querySelector('.media-panel[data-panel="'+tabName+'"][data-proj="'+proj+'"]').classList.add('active');
     });
-  });
+  }
 }
 
-function handleFileUpload(e,i){var f=e.target.files[0];if(!f)return;var url=URL.createObjectURL(f);document.getElementById('file-icon-'+i).textContent=getFileIcon(f.name);document.getElementById('file-name-'+i).textContent=f.name;document.getElementById('file-size-'+i).textContent=formatSize(f.size);var dl=document.getElementById('file-dl-'+i);dl.href=url;dl.download=f.name;document.getElementById('file-preview-'+i).classList.add('has-content');document.getElementById('file-zone-'+i).style.display='none';}
-function removeMedia(type,i){
-  if(type==='file'){document.getElementById('file-preview-'+i).classList.remove('has-content');document.getElementById('file-zone-'+i).style.display='';}
+function handleFileUpload(e,i){
+  var f=e.target.files[0];
+  if(!f){return;}
+  var url=URL.createObjectURL(f);
+  document.getElementById('file-icon-'+i).textContent=getFileIcon(f.name);
+  document.getElementById('file-name-'+i).textContent=f.name;
+  document.getElementById('file-size-'+i).textContent=formatSize(f.size);
+  var dl=document.getElementById('file-dl-'+i);
+  dl.href=url;
+  dl.download=f.name;
+  document.getElementById('file-preview-'+i).classList.add('has-content');
+  document.getElementById('file-zone-'+i).style.display='none';
 }
-function embedUrl(i){var url=document.getElementById('url-input-'+i).value.trim();if(!url)return;url=url.replace('watch?v=','embed/').replace('youtu.be/','www.youtube.com/embed/');var frame=document.getElementById('url-embed-'+i);frame.src=url;frame.style.display='block';}
+
+function removeMedia(type,i){
+  if(type==='file'){
+    document.getElementById('file-preview-'+i).classList.remove('has-content');
+    document.getElementById('file-zone-'+i).style.display='';
+  }
+}
+
+function embedUrl(i){
+  var url=document.getElementById('url-input-'+i).value.trim();
+  if(!url){return;}
+  url=url.replace('watch?v=','embed/').replace('youtu.be/','www.youtube.com/embed/');
+  var frame=document.getElementById('url-embed-'+i);
+  frame.src=url;
+  frame.style.display='block';
+}
 
 function renderCerts(filter){
-  filter=filter||'all';
+  if(!filter){filter='all';}
   var grid=document.getElementById('certsGrid');
   grid.innerHTML='';
-  certs.filter(function(c){return filter==='all'||c.category===filter;}).forEach(function(c,idx){
-    var id='cert-'+idx+'-'+c.category;
-    var hasImage=!!c.image;
-    var statusLabel=c.status==='completed'?'Completed':c.status==='in-progress'?'In Progress':'Planned';
+  for(var c=0;c<certs.length;c++){
+    var cert=certs[c];
+    if(filter!=='all'&&cert.category!==filter){continue;}
+    var id='cert-'+c+'-'+cert.category;
+    var hasImage=!!cert.image;
+    var statusLabel='Planned';
+    if(cert.status==='completed'){statusLabel='Completed';}
+    if(cert.status==='in-progress'){statusLabel='In Progress';}
     var card=document.createElement('div');
     card.className='cert-card';
-    card.innerHTML=
-      '<div class="cert-image-zone" onclick="triggerCertUpload(\''+id+'\')">'+
-        '<img id="'+id+'-img" src="'+(c.image||'')+'" alt="" '+(hasImage?'class="loaded"':'')+' />'+
-        '<div class="cert-placeholder" id="'+id+'-ph" style="'+(hasImage?'display:none':'')+'" >'+
-          '<span class="cert-placeholder-icon">&#128196;</span>'+
-          '<span class="cert-placeholder-text"><strong>Click to upload</strong><br/>certificate image</span>'+
-        '</div>'+
-        '<div class="cert-company-logo">'+c.company+'</div>'+
-        '<input type="file" accept="image/*" id="'+id+'-input" class="cert-upload-input" onchange="handleCertUpload(event,\''+id+'\')" />'+
-      '</div>'+
-      '<div class="cert-info">'+
-        '<div class="cert-name">'+c.name+'</div>'+
-        '<div class="cert-issuer">'+c.issuer+'</div>'+
-        '<div class="cert-bottom">'+
-          '<span class="cert-status '+c.status+'">'+statusLabel+'</span>'+
-          '<button class="cert-view-btn '+(hasImage?'visible':'')+'" id="'+id+'-viewbtn" onclick="openModal(\''+id+'\')">View</button>'+
-        '</div>'+
-      '</div>';
+    var h='<div class="cert-image-zone" onclick="triggerCertUpload(\''+id+'\')">';
+    h+='<img id="'+id+'-img" src="'+(cert.image||'')+'" alt="" '+(hasImage?'class="loaded"':'')+'/>';
+    h+='<div class="cert-placeholder" id="'+id+'-ph" style="'+(hasImage?'display:none':'')+'">';
+    h+='<span class="cert-placeholder-icon">&#128196;</span>';
+    h+='<span class="cert-placeholder-text"><strong>Click to upload</strong><br/>certificate image</span>';
+    h+='</div>';
+    h+='<div class="cert-company-logo">'+cert.company+'</div>';
+    h+='<input type="file" accept="image/*" id="'+id+'-input" class="cert-upload-input" onchange="handleCertUpload(event,\''+id+'\')">';
+    h+='</div>';
+    h+='<div class="cert-info">';
+    h+='<div class="cert-name">'+cert.name+'</div>';
+    h+='<div class="cert-issuer">'+cert.issuer+'</div>';
+    h+='<div class="cert-bottom">';
+    h+='<span class="cert-status '+cert.status+'">'+statusLabel+'</span>';
+    h+='<button class="cert-view-btn '+(hasImage?'visible':'')+'" id="'+id+'-viewbtn" onclick="openModal(\''+id+'\')">View</button>';
+    h+='</div></div>';
+    card.innerHTML=h;
     grid.appendChild(card);
-  });
+  }
 }
 
-function triggerCertUpload(id){document.getElementById(id+'-input').click();}
-function handleCertUpload(e,id){var f=e.target.files[0];if(!f)return;var img=document.getElementById(id+'-img');img.src=URL.createObjectURL(f);img.classList.add('loaded');document.getElementById(id+'-ph').style.display='none';var btn=document.getElementById(id+'-viewbtn');if(btn)btn.classList.add('visible');}
-function openModal(id){document.getElementById('modalImg').src=document.getElementById(id+'-img').src;document.getElementById('modalOverlay').classList.add('open');}
+function triggerCertUpload(id){
+  document.getElementById(id+'-input').click();
+}
 
-document.getElementById('modalClose').addEventListener('click',function(){document.getElementById('modalOverlay').classList.remove('open');});
-document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===document.getElementById('modalOverlay'))document.getElementById('modalOverlay').classList.remove('open');});
+function handleCertUpload(e,id){
+  var f=e.target.files[0];
+  if(!f){return;}
+  var img=document.getElementById(id+'-img');
+  img.src=URL.createObjectURL(f);
+  img.classList.add('loaded');
+  document.getElementById(id+'-ph').style.display='none';
+  var btn=document.getElementById(id+'-viewbtn');
+  if(btn){btn.classList.add('visible');}
+}
+
+function openModal(id){
+  document.getElementById('modalImg').src=document.getElementById(id+'-img').src;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+document.getElementById('modalClose').addEventListener('click',function(){
+  document.getElementById('modalOverlay').classList.remove('open');
+});
+
+document.getElementById('modalOverlay').addEventListener('click',function(e){
+  if(e.target===document.getElementById('modalOverlay')){
+    document.getElementById('modalOverlay').classList.remove('open');
+  }
+});
+
 document.getElementById('certFilter').addEventListener('click',function(e){
-  if(!e.target.classList.contains('cf-btn'))return;
-  document.querySelectorAll('.cf-btn').forEach(function(b){b.classList.remove('active');});
+  if(!e.target.classList.contains('cf-btn')){return;}
+  var btns=document.querySelectorAll('.cf-btn');
+  for(var b=0;b<btns.length;b++){btns[b].classList.remove('active');}
   e.target.classList.add('active');
   renderCerts(e.target.dataset.filter);
 });
 
 var observer=new IntersectionObserver(function(entries){
-  entries.forEach(function(el,i){
-    if(el.isIntersecting){setTimeout(function(){el.target.classList.add('visible');},i*70);observer.unobserve(el.target);}
-  });
+  for(var i=0;i<entries.length;i++){
+    if(entries[i].isIntersecting){
+      (function(el,delay){
+        setTimeout(function(){el.classList.add('visible');},delay);
+      })(entries[i].target,i*70);
+      observer.unobserve(entries[i].target);
+    }
+  }
 },{threshold:0.08});
-function observeAll(){document.querySelectorAll('.reveal').forEach(function(el){observer.observe(el);});}
+
+function observeAll(){
+  var els=document.querySelectorAll('.reveal');
+  for(var i=0;i<els.length;i++){observer.observe(els[i]);}
+}
 
 renderProjects();
 renderCerts('all');
